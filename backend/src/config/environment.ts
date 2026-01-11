@@ -26,10 +26,54 @@ export const config = {
             endpoint: process.env.AZURE_OPENAI_ENDPOINT || '',
             apiKey: process.env.AZURE_OPENAI_API_KEY || '',
             deploymentName: process.env.AZURE_OPENAI_DEPLOYMENT_NAME || 'gpt-4',
-            apiVersion: process.env.AZURE_OPENAI_API_VERSION || '2024-02-15-preview'
+            apiVersion: process.env.AZURE_OPENAI_API_VERSION || '2024-02-15-preview',
+            enabled: !!(process.env.AZURE_OPENAI_ENDPOINT && process.env.AZURE_OPENAI_API_KEY)
+        },
+        entraId: {
+            tenantId: process.env.AZURE_ENTRA_ID_TENANT_ID || '',
+            clientId: process.env.AZURE_ENTRA_ID_CLIENT_ID || '',
+            clientSecret: process.env.AZURE_ENTRA_ID_CLIENT_SECRET || '',
+            authority: process.env.AZURE_ENTRA_ID_AUTHORITY || '',
+            enabled: process.env.AZURE_ENTRA_ID_ENABLED === 'true'
+        },
+        speech: {
+            key: process.env.AZURE_SPEECH_KEY || '',
+            region: process.env.AZURE_SPEECH_REGION || 'eastus',
+            language: process.env.AZURE_SPEECH_LANGUAGE || 'en-US',
+            enabled: process.env.AZURE_SPEECH_ENABLED === 'true'
+        },
+        language: {
+            key: process.env.AZURE_LANGUAGE_KEY || '',
+            endpoint: process.env.AZURE_LANGUAGE_ENDPOINT || '',
+            enabled: process.env.AZURE_LANGUAGE_ENABLED === 'true'
+        },
+        eventGrid: {
+            endpoint: process.env.AZURE_EVENT_GRID_ENDPOINT || '',
+            key: process.env.AZURE_EVENT_GRID_KEY || '',
+            topicName: process.env.AZURE_EVENT_GRID_TOPIC_NAME || 'resqnet-events',
+            enabled: process.env.AZURE_EVENT_GRID_ENABLED === 'true'
+        },
+        iot: {
+            connectionString: process.env.AZURE_IOT_CONNECTION_STRING || '',
+            enabled: process.env.AZURE_IOT_ENABLED === 'true',
+            thresholds: {
+                heartRateMin: parseInt(process.env.IOT_HEART_RATE_MIN || '40', 10),
+                heartRateMax: parseInt(process.env.IOT_HEART_RATE_MAX || '150', 10),
+                spO2Min: parseInt(process.env.IOT_SPO2_MIN || '90', 10),
+                systolicMax: parseInt(process.env.IOT_SYSTOLIC_MAX || '180', 10),
+                temperatureMax: parseFloat(process.env.IOT_TEMPERATURE_MAX || '39.5')
+            }
+        },
+        fhir: {
+            url: process.env.AZURE_FHIR_URL || '',
+            tenantId: process.env.AZURE_FHIR_TENANT_ID || '',
+            clientId: process.env.AZURE_FHIR_CLIENT_ID || '',
+            clientSecret: process.env.AZURE_FHIR_CLIENT_SECRET || '',
+            enabled: process.env.AZURE_FHIR_ENABLED === 'true'
         },
         maps: {
-            subscriptionKey: process.env.AZURE_MAPS_SUBSCRIPTION_KEY || ''
+            subscriptionKey: process.env.AZURE_MAPS_SUBSCRIPTION_KEY || '',
+            enabled: !!(process.env.AZURE_MAPS_SUBSCRIPTION_KEY)
         },
         communication: {
             connectionString: process.env.AZURE_COMMUNICATION_CONNECTION_STRING || '',
