@@ -35,6 +35,7 @@
         "@azure/communication-sms": "^1.1.0",
         "@azure/identity": "^4.0.0",
         "@azure/maps-rest": "^1.0.0",
+        "applicationinsights": "^2.9.1",
         "winston": "^3.11.0",
         "compression": "^1.7.4",
         "morgan": "^1.10.0"
